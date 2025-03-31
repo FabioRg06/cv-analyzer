@@ -1,0 +1,78 @@
+# Archivos de Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Archivos de entorno virtual
+.env/
+.env/*
+venv/
+venv*/
+bin/
+include/
+lib/
+lib64/
+pyvenv.cfg
+
+# Archivos de configuración de Django
+db.sqlite3
+*.log
+*.pot
+*.py[co]
+*.swp
+*.swo
+*~
+*.DS_Store
+
+# Configuración de base de datos (PostgreSQL, SQLite, etc.)
+*.sqlite3
+*.db
+*.sqlite
+*.pkl
+*.json
+
+# Archivos de migraciones de Django (opcional si no quieres versionarlas)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Archivos de dependencias
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Archivos de compilación de Python
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de IDEs y editores
+.vscode/
+.idea/
+*.iml
+
+# Archivos de Docker
+docker-compose.override.yml
+**/media/*
+**/staticfiles/*
+**/static/*
+
+# Claves y credenciales
+.env
+secrets.json
+
+# Caché de Celery y archivos temporales
+celerybeat-schedule
+*.pid
+
+# Archivos de cobertura de pruebas
+htmlcov/
+.coverage
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+*.mo
+junit.xml
+tox/
