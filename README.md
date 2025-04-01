@@ -36,10 +36,3 @@ Make sure you have installed:
 - **Node.js** and **npm** (optional if running the frontend manually)  
 - **Python 3.x** and **pip** (optional if running the backend manually)  
 
-### Steps  
-
-1. **Clone this repository:**  
-
-   ```bash
-   git clone https://github.com/your-username/cv-analyzer.git
-   cd cv-analyzer
