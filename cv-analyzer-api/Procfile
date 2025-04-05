@@ -1,2 +1,2 @@
-web: gunicorn cvAnalizer.wsgi.application --chdir cvAnalizer --log-file -
+web: gunicorn cvAnalizer.wsgi --chdir cvAnalizer --log-file -
 
