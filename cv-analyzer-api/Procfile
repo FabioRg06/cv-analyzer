@@ -1,1 +1,1 @@
-web: gunicorn cvAnalizer.cvAnalizer.wsgi --log-file -
+web: gunicorn cvAnalizer.wsgi --log-file -
