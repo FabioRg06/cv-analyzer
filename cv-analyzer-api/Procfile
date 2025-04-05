@@ -1,1 +1,0 @@
-web: gunicorn cvAnalizer.cvAnalizer.wsgi --log-file -
