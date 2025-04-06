@@ -4,7 +4,7 @@ export const uploadFile = async (file: File, jobDescription: string) => {
     formData.append("job_description", jobDescription);
   
     try {
-      const response = await fetch("${process.env.NEXT_PUBLIC_API_URL}api/upload/", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}api/upload/}`, {
         method: "POST",
         body: formData,
       });
