@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o1#7v+g!7#$3*eqlw=&*dtz+2l2upl)9^d%cz9ck%pein@%&gb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.20.21","localhost"]
+ALLOWED_HOSTS = ["localhost","cv-analyzer-production-9b10.up.railway.app"]
 
 
 # Application definition
