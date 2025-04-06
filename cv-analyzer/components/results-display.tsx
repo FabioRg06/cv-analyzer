@@ -17,6 +17,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Confetti from "react-confetti"
 import { useWindowSize } from "@/app/hooks/use-window-size"
+import { useToast } from "@/app/hooks/use-toast"
 interface AnalysisResult {
   compatibilityScore: number
   matchingSkills: string[]
@@ -33,11 +34,18 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
   const [animatedScore, setAnimatedScore] = useState(0)
   const [showConfetti, setShowConfetti] = useState(false)
   const { width, height } = useWindowSize()
+  const { toast } = useToast()
   const data = analysisData
   // Animar el contador de puntuación
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowConfetti(data.compatibilityScore >= 90)
+      toast({
+        title: "¡Gracias por usar CV Analyzer!",
+        description: "Apóyanos para seguir ofreciendo más análisis y funcionalidades.",
+        className: "bg-primary/10 border-primary text-foreground",
+        duration: 5000,
+      })
     }, 1500)
 
     const interval = setInterval(() => {
@@ -54,7 +62,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
       clearInterval(interval)
       clearTimeout(timer)
     }
-  }, [data.compatibilityScore])
+  }, [data.compatibilityScore,toast])
   
   const getStatusMessages = (score: number) => {
     if (score >= 90) {
@@ -364,6 +372,18 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
         </Card>
       </motion.div>
 
+      <motion.div
+        className="text-center px-4 py-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      >
+        <p className="text-sm text-yellow-700 dark:text-yellow-400">
+          <span className="font-medium">Recuerda:</span> Este es un análisis de evaluación y no refleja necesariamente
+          la realidad del proceso de selección. Te animamos a seguir mejorando tus habilidades y a no desanimarte si el
+          resultado no es el esperado.
+        </p>
+      </motion.div>
       <motion.div
         className="flex justify-center"
         initial={{ y: 20, opacity: 0 }}

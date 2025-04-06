@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "CV Compatibility Analyzer",
+  title: "CV Analyzer",
   description: "Analyze your CV compatibility with job descriptions",
 }
 

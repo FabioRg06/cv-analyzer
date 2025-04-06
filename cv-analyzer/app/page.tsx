@@ -1,5 +1,6 @@
 import { Uploader } from "@/components/uploader"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
           <Uploader />
         </div>
       </main>
+      <Toaster />
     </div>
   )
 }
