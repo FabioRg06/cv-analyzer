@@ -191,7 +191,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
         transition={{ duration: 0.4, delay: 0.1 }}
       >
         <h2 className="text-2xl font-bold mb-2">Compatibility Analysis</h2>
-        <p className="text-muted-foreground">Here's how your CV matches the job description</p>
+        <p className="text-muted-foreground"> how your CV matches the job description</p>
       </motion.div>
 
       <motion.div
