@@ -12,12 +12,15 @@ import {
   Award,
   ThumbsUp,
   ThumbsDown,
+  Github,
+  Star,
 } from "lucide-react"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Confetti from "react-confetti"
 import { useWindowSize } from "@/app/hooks/use-window-size"
 import { useToast } from "@/app/hooks/use-toast"
+import { GitHubStarButton } from "./github-star-buttom"
 interface AnalysisResult {
   compatibilityScore: number
   matchingSkills: string[]
@@ -41,8 +44,8 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
     const timer = setTimeout(() => {
       setShowConfetti(data.compatibilityScore >= 90)
       toast({
-        title: "¡Gracias por usar CV Analyzer!",
-        description: "Apóyanos para seguir ofreciendo más análisis y funcionalidades.",
+        title: "Thanks for using CV Analyzer!",
+        description: "Support us to continue offering more analyses and features.",
         className: "bg-primary/10 border-primary text-foreground",
         duration: 5000,
       })
@@ -69,20 +72,20 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
       return [
         {
           icon: <Award className="h-5 w-5 text-green-600 dark:text-green-500" />,
-          title: "Excelente Compatibilidad",
-          message: "Tu perfil es una coincidencia excepcional para esta posición",
+          title: "Excellent Compatibility",
+          message: "Your profile is an exceptional match for this position",
           bgClass: "bg-green-50 dark:bg-green-950/30",
         },
         {
           icon: <ThumbsUp className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
-          title: "Candidato Destacado",
-          message: "Tienes todas las habilidades clave requeridas para el puesto",
+          title: "Outstanding Candidate",
+          message: "You have all the key skills required for the position",
           bgClass: "bg-blue-50 dark:bg-blue-950/30",
         },
         {
           icon: <Zap className="h-5 w-5 text-purple-600 dark:text-purple-500" />,
-          title: "Alta Probabilidad",
-          message: "Tienes una alta probabilidad de avanzar en el proceso de selección",
+          title: "High Probability",
+          message: "You have a high probability of advancing in the selection process",
           bgClass: "bg-purple-50 dark:bg-purple-950/30",
         },
       ]
@@ -90,20 +93,20 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
       return [
         {
           icon: <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-500" />,
-          title: "Buena Compatibilidad",
-          message: "Tu perfil es una buena coincidencia para esta posición",
+          title: "Good Compatibility",
+          message: "Your profile is a good match for this position",
           bgClass: "bg-green-50 dark:bg-green-950/30",
         },
         {
           icon: <AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />,
-          title: "Algunas Brechas",
-          message: "Hay algunas habilidades que podrías mejorar",
+          title: "Some Gaps",
+          message: "There are some skills you could improve",
           bgClass: "bg-yellow-50 dark:bg-yellow-950/30",
         },
         {
           icon: <Zap className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
-          title: "Potencial",
-          message: "Con algunos ajustes, podrías ser un excelente candidato",
+          title: "Potential",
+          message: "With some adjustments, you could be an excellent candidate",
           bgClass: "bg-blue-50 dark:bg-blue-950/30",
         },
       ]
@@ -111,20 +114,20 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
       return [
         {
           icon: <AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />,
-          title: "Compatibilidad Moderada",
-          message: "Tu perfil coincide parcialmente con los requisitos",
+          title: "Moderate Compatibility",
+          message: "Your profile partially matches the requirements",
           bgClass: "bg-yellow-50 dark:bg-yellow-950/30",
         },
         {
           icon: <XCircle className="h-5 w-5 text-orange-600 dark:text-orange-500" />,
-          title: "Brechas Significativas",
-          message: "Hay varias habilidades clave que necesitas desarrollar",
+          title: "Significant Gap",
+          message: "There are several key skills you need to develop",
           bgClass: "bg-orange-50 dark:bg-orange-950/30",
         },
         {
           icon: <Zap className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
-          title: "Oportunidad de Mejora",
-          message: "Con formación adicional, podrías mejorar tu compatibilidad",
+          title: "Improvement Opportunity",
+          message: "With additional training, you could improve your compatibility",
           bgClass: "bg-blue-50 dark:bg-blue-950/30",
         },
       ]
@@ -132,20 +135,20 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
       return [
         {
           icon: <ThumbsDown className="h-5 w-5 text-red-600 dark:text-red-500" />,
-          title: "Baja Compatibilidad",
-          message: "Tu perfil no coincide bien con los requisitos del puesto",
+          title: "Low Compatibility",
+          message: "Your profile doesn't match well with the job requirements",
           bgClass: "bg-red-50 dark:bg-red-950/30",
         },
         {
           icon: <XCircle className="h-5 w-5 text-red-600 dark:text-red-500" />,
-          title: "Habilidades Faltantes",
-          message: "Te faltan varias habilidades esenciales para este puesto",
+          title: "Missing Skills",
+          message: "You're missing several essential skills for this position",
           bgClass: "bg-red-50 dark:bg-red-950/30",
         },
         {
           icon: <AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />,
-          title: "Considerar Alternativas",
-          message: "Podrías considerar roles que se alineen mejor con tus habilidades actuales",
+          title: "Consider Alternatives",
+          message: "You might consider roles that better align with your current skills",
           bgClass: "bg-yellow-50 dark:bg-yellow-950/30",
         },
       ]
@@ -189,8 +192,8 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
       >
-        <h2 className="text-2xl font-bold mb-2">Análisis de Compatibilidad</h2>
-        <p className="text-muted-foreground">Así es como tu CV coincide con la descripción del trabajo</p>
+        <h2 className="text-2xl font-bold mb-2">Compatibility Analysis</h2>
+        <p className="text-muted-foreground">Here's how your CV matches the job description</p>
       </motion.div>
 
       <motion.div
@@ -201,7 +204,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
         <Card className="mb-6 overflow-hidden">
           <CardContent className="pt-6">
             <div className="text-center mb-4">
-              <h3 className="text-xl font-semibold mb-2">Compatibilidad General</h3>
+              <h3 className="text-xl font-semibold mb-2">Overall Compatibility</h3>
               <div className="relative inline-flex items-center justify-center">
                 <svg className="w-32 h-32 transform transition-transform hover:scale-105">
                   <circle
@@ -270,7 +273,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
             <CardContent className="pt-6">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-500" />
-                Habilidades Coincidentes
+                Matching Skills
               </h3>
               {data.matchingSkills.length > 0 ? (
                 <ul className="space-y-2">
@@ -289,7 +292,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
                   ))}
                 </ul>
               ) : (
-                <p className="text-muted-foreground">No se encontraron habilidades coincidentes.</p>
+                <p className="text-muted-foreground">No matching skills found.</p>
               )}
             </CardContent>
           </Card>
@@ -305,7 +308,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
             <CardContent className="pt-6">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                 <XCircle className="h-5 w-5 text-red-600 dark:text-red-500" />
-                Habilidades Faltantes
+                Missing Skills
               </h3>
               {data.missingSkills.length > 0 ? (
                 <ul className="space-y-2">
@@ -330,7 +333,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  ¡Felicidades! Tienes todas las habilidades requeridas.
+                  Congratulations! You have all the required skills.
                 </motion.p>
               )}
             </CardContent>
@@ -346,7 +349,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
       >
         <Card className="transition-shadow hover:shadow-lg">
           <CardContent className="pt-6">
-            <h3 className="text-lg font-semibold mb-4">Recomendaciones</h3>
+            <h3 className="text-lg font-semibold mb-4">Recommendations</h3>
             {data.recommendations.length > 0 ? (
               <ul className="space-y-3">
                 {data.recommendations.map((recommendation, index) => (
@@ -366,7 +369,7 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted-foreground">No hay recomendaciones específicas en este momento.</p>
+              <p className="text-muted-foreground">No specific recommendations at this time.</p>
             )}
           </CardContent>
         </Card>
@@ -379,16 +382,16 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
         transition={{ duration: 0.5, delay: 0.6 }}
       >
         <p className="text-sm text-yellow-700 dark:text-yellow-400">
-          <span className="font-medium">Recuerda:</span> Este es un análisis de evaluación y no refleja necesariamente
-          la realidad del proceso de selección. Te animamos a seguir mejorando tus habilidades y a no desanimarte si el
-          resultado no es el esperado.
+          <span className="font-medium">Remember:</span> This is an evaluation analysis and does not necessarily reflect
+          the reality of the selection process. We encourage you to keep improving your skills and not get discouraged
+          if the result is not what you expected.
         </p>
       </motion.div>
       <motion.div
-        className="flex justify-center"
+        className="flex justify-center gap-4 flex-wrap"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.7 }}
+        transition={{ duration: 0.4, delay: 0.8 }}
       >
         <Button
           className="flex items-center gap-2 transition-transform hover:scale-105"
@@ -396,8 +399,13 @@ export function ResultsDisplay({ onReset, analysisData }: ResultsDisplayProps) {
           // whileTap={{ scale: 0.95 }}
         >
           <Download className="h-4 w-4" />
-          Descargar Informe Completo
+          Download Full Report
         </Button>
+
+        <GitHubStarButton
+          repoUrl="https://github.com/FabioRg06/cv-analyzer"
+          className="inline-block"
+        />
       </motion.div>
     </div>
   )

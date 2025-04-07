@@ -44,7 +44,7 @@ export function Uploader() {
     if (validTypes.includes(fileType)) {
       setFile(selectedFile)
     } else {
-      alert("Por favor, sube un documento PDF o Word (.doc, .docx)")
+      alert("Please upload a PDF or Word document (.doc, .docx)")
     }
   }
 
@@ -76,12 +76,12 @@ export function Uploader() {
 
   const handleAnalyze = async () => {
     if (!file) {
-      alert("Por favor, sube tu CV");
+      alert("we need your CV to analyze it :)")
       return;
     }
   
     if (!jobDescription.trim()) {
-      alert("Por favor, ingresa una descripción del trabajo");
+      alert("don't forget to paste the job description :)")
       return;
     }
   
@@ -105,7 +105,6 @@ export function Uploader() {
     setProgress(100);
   
     if (analysis) {
-      console.log("Análisis de IA:", analysis);
       setAnalysisData({
         compatibilityScore: analysis.compatibilityScore,
         matchingSkills: analysis.matchingSkills,
@@ -114,7 +113,7 @@ export function Uploader() {
       });
       setShowResults(true);
     } else {
-      alert("Hubo un error al procesar el archivo");
+      alert("mmm...we are having some issues with the analysis, please try again later");
     }
   
     setIsAnalyzing(false);
@@ -136,8 +135,8 @@ export function Uploader() {
       <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }}>
         <Card className="overflow-hidden border-primary/20 hover:shadow-md transition-shadow duration-300">
           <div className="bg-gradient-to-r from-primary/5 to-primary/10 px-6 py-4 border-b">
-            <h2 className="text-xl font-semibold">Sube tu CV</h2>
-            <p className="text-sm text-muted-foreground">Formatos soportados: PDF, DOCX</p>
+            <h2 className="text-xl font-semibold">Upload your CV</h2>
+            <p className="text-sm text-muted-foreground">Supported formats: PDF, DOCX</p>
           </div>
           <CardContent className="p-6">
             <motion.div
@@ -190,7 +189,7 @@ export function Uploader() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.3 }}
                     >
-                      Archivo seleccionado correctamente
+                      File successfully selected
                     </motion.p>
                     <motion.div
                       initial={{ y: 10, opacity: 0 }}
@@ -206,7 +205,7 @@ export function Uploader() {
                         }}
                         className="mt-2 hover:bg-red-50 hover:text-red-500 hover:border-red-200 transition-colors"
                       >
-                        Cambiar archivo
+                        Change file
                       </Button>
                     </motion.div>
                   </motion.div>
@@ -239,7 +238,7 @@ export function Uploader() {
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1, duration: 0.3 }}
                     >
-                      {isDragging ? "Suelta tu archivo aquí" : "Arrastra y suelta tu CV aquí"}
+                      {isDragging ? "Drop your file here" : "Drag and drop your CV here"}
                     </motion.h3>
                     <motion.p
                       className="text-sm text-muted-foreground mb-3"
@@ -247,7 +246,7 @@ export function Uploader() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.3 }}
                     >
-                      o
+                      or
                     </motion.p>
                     <motion.div
                       initial={{ y: 10, opacity: 0 }}
@@ -258,7 +257,7 @@ export function Uploader() {
                     >
                       <Button variant="outline" className="relative z-10 group">
                         <FileUp className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                        Seleccionar archivo
+                        Select file
                       </Button>
                     </motion.div>
                     <input
@@ -283,14 +282,14 @@ export function Uploader() {
       >
         <Card className="overflow-hidden border-primary/20 hover:shadow-md transition-shadow duration-300">
           <div className="bg-gradient-to-r from-primary/5 to-primary/10 px-6 py-4 border-b">
-            <h2 className="text-xl font-semibold">Descripción del Trabajo</h2>
+            <h2 className="text-xl font-semibold">Job Description</h2>
             <p className="text-sm text-muted-foreground">
-              Pega la descripción del trabajo para analizar la compatibilidad
+            Paste the job description to analyze compatibility
             </p>
           </div>
           <CardContent className="p-6">
             <Textarea
-              placeholder="Pega la descripción del trabajo aquí..."
+              placeholder="Paste the job description here..."
               className="min-h-[200px] resize-none focus-visible:ring-primary transition-all duration-200"
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
@@ -309,10 +308,10 @@ export function Uploader() {
             transition={{ duration: 0.3 }}
             className="space-y-4 py-4"
           >
-            <p className="text-center font-medium">Analizando tu CV...</p>
+            <p className="text-center font-medium">Analyzing your CV...</p>
             <Progress value={progress} className="h-2" />
             <p className="text-center text-sm text-muted-foreground">
-              Estamos comparando tus habilidades con los requisitos del trabajo
+            We're comparing your skills with the job requirements
             </p>
           </motion.div>
         ) : (
@@ -330,7 +329,7 @@ export function Uploader() {
               disabled={!file || !jobDescription.trim()}
               
             >
-              <span className="relative z-10">Analizar Compatibilidad</span>
+              <span className="relative z-10">Analyze Compatibility</span>
               <motion.span
                 className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary"
                 initial={{ x: "-100%" }}

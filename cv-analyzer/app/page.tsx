@@ -32,10 +32,10 @@ export default function Home() {
               </div>
             </div>
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-
+              CV Compatibility Analyzer
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Sube tu CV y una descripción del trabajo para ver qué tan compatible eres para la posición
+             Upload your CV and a job description to see how compatible you are for the position
             </p>
           </div>
           <Uploader />
