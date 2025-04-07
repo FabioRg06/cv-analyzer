@@ -311,7 +311,7 @@ export function Uploader() {
             <p className="text-center font-medium">Analyzing your CV...</p>
             <Progress value={progress} className="h-2" />
             <p className="text-center text-sm text-muted-foreground">
-            We're comparing your skills with the job requirements
+             comparing your skills with the job requirements
             </p>
           </motion.div>
         ) : (
